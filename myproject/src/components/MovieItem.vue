@@ -1,28 +1,41 @@
+<style scoped>
+.button {
+  width: max-content;
+  padding: 1em;
+  border-radius: 20px;
+  vertical-align: middle;
+  border: 2px solid black;
+  background-color: #056BB3;
+  margin-left: 3%;
+  color:white;
+  right: 100%;
+  font-weight: bold;
+
+}
+
+.button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+</style>
+
 <template>
-<div>{{movie.title}} ({{movie.releaseDate}}) <input type="text" ref="editinput">
-<button type="button" v-on:click="edit">edit</button>
-<button type="button" v-on:click="deletemovie">delete</button>
-<router-link :to="{ name: 'edit', params: { id: movie.id }}">go to edit ...</router-link>
-
-
-</div>
+  <div>
+    {{movie.title}} ({{movie.releaseDate}})
+    <router-link :to="{ name: 'details', params: { id: movie.id }}">
+      <button type="button" class="button">Détails</button>
+    </router-link>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'MovieItem',
+  name: "MovieItem",
   props: {
     movie: Object
   },
-  methods: {
-    deletemovie() {
-      this.$emit("deletedmovie",this.movie);
-    },
-    edit() {
-       this.$emit("newmoviename",this.movie, this.$refs.editinput.value);
-     }
-  }
-}
+  methods: {}
+};
 </script>
 
 
